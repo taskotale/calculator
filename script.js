@@ -18,6 +18,7 @@ window.addEventListener('keyup', e => {
 
 function userTyping(buttonCode) {
     if (!isNaN(buttonCode) || buttonCode === '.') {
+        contentOnScreen.startsWith(0, 0) ? contentOnScreen = '' : contentOnScreen;
         if (contentOnScreen.length < 10) {
             contentOnScreen += buttonCode;
             screen.textContent = contentOnScreen;
@@ -47,8 +48,6 @@ function userTyping(buttonCode) {
     }
 }
 
-
-
 function operation(a, b, c) {
     if (b === '+') {
         a = +c + +a;
@@ -73,7 +72,7 @@ function operation(a, b, c) {
         a = a * c / 100;
     }
     if (b === 'Enter') {
-        c===''? a = a : a=c;
+        c === '' ? a = a : a = c;
     }
 
     return a;
