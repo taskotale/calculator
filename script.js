@@ -45,39 +45,9 @@ function userTyping(buttonCode) {
         operator = buttonCode;
         contentOnScreen = '';
     }
-
-
-
-    // else if (buttonCode === '√' || buttonCode === '%') {
-    //     operator = buttonCode;
-    //     result = operation(result, operator, contentOnScreen);
-    //     screen.textContent = result;
-    //     console.log(result)
-    //     console.log(contentOnScreen)
-    //     console.log(operator)
-    // } else if (buttonCode === 'Escape') {
-    //     screen.textContent = 0;
-    //     contentOnScreen = '';
-    //     operator = '+';
-    //     result = '';
-    // } else if (buttonCode === 'Backspace') {
-    //     contentOnScreen = contentOnScreen.slice(0, -1);
-    //     screen.textContent = contentOnScreen;
-    // } else {
-    //     result = operation(result, operator, contentOnScreen);
-    //     screen.textContent = result;
-    //     operator = buttonCode;
-    //     contentOnScreen = '';
-    // }
 }
 
-function clearScreen() {
-    result = '';
-    contentOnScreen = '';
-    screen.textContent = '';
-    operator = '+';
-    enableButtons();
-}
+
 
 function operation(a, b, c) {
     if (b === '+') {
@@ -101,6 +71,9 @@ function operation(a, b, c) {
     }
     if (b === '%') {
         a = a * c / 100;
+    }
+    if (b === 'Enter') {
+        c===''? a = a : a=c;
     }
 
     return a;
