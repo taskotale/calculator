@@ -40,14 +40,15 @@ body {
     justify-content: flex-end;
 }
 
-.buttons {
+#buttons {
+    transform: none;
     aspect-ratio: 0.8;
     margin: 15px;
     gap: 5px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    border: none;
 }
-
 
 .grid-col-span-2 {
     grid-column: span 2;
@@ -67,9 +68,6 @@ button {
     transition: all 0.1s;
 }
 
-button:hover {
-    background-color: rgba(160, 160, 160, 0.756);
-} 
 
 .equals,
 .ac {
@@ -135,11 +133,16 @@ a {
         width: 100%;
     }
 
+
     .buttons {
         width: 100%;
         margin: 0;
         padding: 0;
         font-size: 15px;
+    }
+
+    button:hover {
+        background-color: rgba(160, 160, 160, 0.756);
     }
 
     a {
