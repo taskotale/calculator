@@ -21,7 +21,8 @@ const userTyping = (buttonCode) => {
         contentOnScreen.startsWith(0, 0) ? contentOnScreen = '' : contentOnScreen;
         if (contentOnScreen.length < 10) {
             contentOnScreen += buttonCode;
-            screen.textContent = contentOnScreen;
+            contentOnScreen.split('.').length - 1 < 2 ? screen.textContent = contentOnScreen
+                : contentOnScreen = contentOnScreen.slice(0, -1);
         }
     } else if (buttonCode === 'Backspace') {
         contentOnScreen = contentOnScreen.slice(0, -1);
@@ -33,8 +34,13 @@ const userTyping = (buttonCode) => {
         result = '';
     } else if (buttonCode === '%') {
         contentOnScreen = operation(result, buttonCode, contentOnScreen);
-        screen.textContent = contentOnScreen;
+        screen.textContent = roundUp(contentOnScreen);
         result = operation(result, operator, contentOnScreen)
+        contentOnScreen = '';
+    } else if (buttonCode === '√') {
+        contentOnScreen = operation(result, buttonCode, contentOnScreen);
+        screen.textContent = roundUp(contentOnScreen);
+        result = operation(result, operator, contentOnScreen);
         contentOnScreen = '';
     } else {
         result = operation(result, operator, contentOnScreen);
@@ -85,3 +91,4 @@ function roundUp(numberToRound) {
     } else { return numberToRound };
 
 }
+
