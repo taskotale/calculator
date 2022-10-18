@@ -5,16 +5,26 @@ let contentOnScreen = '';
 let operator = '+';
 let result = '';
 
-
 buttons.addEventListener('click', e => {
     const mouseCode = e.target.dataset.target
+    const pressed = e.target
+    pressed.classList.add('pressed')
     userTyping(mouseCode)
 })
 
-window.addEventListener('keyup', e => {
+window.addEventListener('keydown', e => {
     const keyboardCode = document.querySelector(`button[data-target="${e.key}"]`).dataset.target;
     userTyping(keyboardCode)
+    const pressed = document.querySelector(`button[data-target="${e.key}"]`)
+    pressed.classList.add('pressed')
 })
+
+const removeAfterTransition = (e) => {
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('pressed')
+}
+const buttonsPressed = document.querySelectorAll('button');
+buttonsPressed.forEach(key => key.addEventListener('transitionend', removeAfterTransition));
 
 const userTyping = (buttonCode) => {
     if (!isNaN(buttonCode) || buttonCode === '.') {
@@ -81,7 +91,7 @@ const operation = (a, b, c) => {
 }
 
 
-function roundUp(numberToRound) {
+const roundUp = (numberToRound) => {
     overDigits = numberToRound.toString().slice(10)
     overDigitsTransformed = 'e' + overDigits.length
     baseNumber = numberToRound.toString()
@@ -89,6 +99,5 @@ function roundUp(numberToRound) {
         numberToRound = baseNumber.slice(0, 10) + overDigitsTransformed
         return numberToRound
     } else { return numberToRound };
-
 }
 

@@ -48,6 +48,7 @@ body {
     grid-template-columns: repeat(4, 1fr);
 }
 
+
 .grid-col-span-2 {
     grid-column: span 2;
 }
@@ -63,13 +64,23 @@ button {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border-radius: 10px;
     background-color: lightgray;
+    transition: all 0.1s;
 }
 
-#equals,
-#ac {
+button:hover {
+    background-color: rgba(160, 160, 160, 0.756);
+} 
+
+.equals,
+.ac {
     background-color: rgb(210, 154, 50);
 }
 
+.pressed {
+    transform: scale(0.9);
+    border: 1px solid black;
+    box-shadow: 0 0 10px rgb(89, 72, 216);
+}
 
 footer {
     margin: 10px;
