@@ -16,7 +16,7 @@ window.addEventListener('keyup', e => {
     userTyping(keyboardCode)
 })
 
-function userTyping(buttonCode) {
+const userTyping = (buttonCode) => {
     if (!isNaN(buttonCode) || buttonCode === '.') {
         contentOnScreen.startsWith(0, 0) ? contentOnScreen = '' : contentOnScreen;
         if (contentOnScreen.length < 10) {
@@ -42,13 +42,13 @@ function userTyping(buttonCode) {
 
     else {
         result = operation(result, operator, contentOnScreen);
-        screen.textContent = result;
+        screen.textContent = roundUp(result);
         operator = buttonCode;
         contentOnScreen = '';
     }
 }
 
-function operation(a, b, c) {
+const operation = (a, b, c) => {
     if (b === '+') {
         a = +c + +a;
     }
@@ -78,3 +78,14 @@ function operation(a, b, c) {
     return a;
 }
 
+
+function roundUp(numberToRound) {
+    overDigits = numberToRound.toString().slice(10)
+    overDigitsTransformed = 'e' + overDigits.length
+    baseNumber = numberToRound.toString()
+    if (baseNumber.length > 10) {
+        numberToRound = baseNumber.slice(0, 10) + overDigitsTransformed
+        return numberToRound
+    } else { return numberToRound };
+
+}
