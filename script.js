@@ -22,27 +22,54 @@ function userTyping(buttonCode) {
             contentOnScreen += buttonCode;
             screen.textContent = contentOnScreen;
         }
-    } else if (buttonCode === '√'||buttonCode === '%') {
-        operator = buttonCode;
-        result = operation(result, operator, contentOnScreen);
-        screen.textContent = result;
+    } else if (buttonCode === 'Backspace') {
+        contentOnScreen = contentOnScreen.slice(0, -1);
+        contentOnScreen === '' ? screen.textContent = 0 : screen.textContent = contentOnScreen;
     } else if (buttonCode === 'Escape') {
         screen.textContent = 0;
         contentOnScreen = '';
         operator = '+';
         result = '';
-    } else if (buttonCode === 'Backspace') {
-        contentOnScreen = contentOnScreen.slice(0,-1);
+    }
+
+    else if (buttonCode === '%') {
+        contentOnScreen = operation(result, buttonCode, contentOnScreen);
         screen.textContent = contentOnScreen;
-    } else {
+        result = operation(result, operator, contentOnScreen)
+        contentOnScreen = '';
+    }
+
+    else {
         result = operation(result, operator, contentOnScreen);
         screen.textContent = result;
         operator = buttonCode;
         contentOnScreen = '';
     }
 
-}
 
+
+    // else if (buttonCode === '√' || buttonCode === '%') {
+    //     operator = buttonCode;
+    //     result = operation(result, operator, contentOnScreen);
+    //     screen.textContent = result;
+    //     console.log(result)
+    //     console.log(contentOnScreen)
+    //     console.log(operator)
+    // } else if (buttonCode === 'Escape') {
+    //     screen.textContent = 0;
+    //     contentOnScreen = '';
+    //     operator = '+';
+    //     result = '';
+    // } else if (buttonCode === 'Backspace') {
+    //     contentOnScreen = contentOnScreen.slice(0, -1);
+    //     screen.textContent = contentOnScreen;
+    // } else {
+    //     result = operation(result, operator, contentOnScreen);
+    //     screen.textContent = result;
+    //     operator = buttonCode;
+    //     contentOnScreen = '';
+    // }
+}
 
 function clearScreen() {
     result = '';
@@ -51,7 +78,6 @@ function clearScreen() {
     operator = '+';
     enableButtons();
 }
-
 
 function operation(a, b, c) {
     if (b === '+') {
@@ -73,9 +99,10 @@ function operation(a, b, c) {
     if (b === '√') {
         c === '' ? a = Math.sqrt(a) : a = Math.sqrt(c);
     }
-    if (b==='%') {
-        a = a * c/100
+    if (b === '%') {
+        a = a * c / 100;
     }
+
     return a;
 }
 
