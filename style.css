@@ -98,6 +98,7 @@ a {
         display: flex;
         justify-content:center;
         height: 80%;
+        min-height: 75%;
         padding: 10px;
     }
 

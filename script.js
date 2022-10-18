@@ -31,16 +31,12 @@ const userTyping = (buttonCode) => {
         contentOnScreen = '';
         operator = '+';
         result = '';
-    }
-
-    else if (buttonCode === '%') {
+    } else if (buttonCode === '%') {
         contentOnScreen = operation(result, buttonCode, contentOnScreen);
         screen.textContent = contentOnScreen;
         result = operation(result, operator, contentOnScreen)
         contentOnScreen = '';
-    }
-
-    else {
+    } else {
         result = operation(result, operator, contentOnScreen);
         screen.textContent = roundUp(result);
         operator = buttonCode;
