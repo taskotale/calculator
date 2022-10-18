@@ -46,10 +46,10 @@ body {
 .buttons {
     aspect-ratio: 0.8;
     margin: 15px;
+    gap: 5px;
     margin-bottom: 60px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
 }
 
 .grid-col-span-2 {
@@ -62,7 +62,8 @@ body {
 }
 
 button {
-    border: 3px outset gray;
+    box-sizing: border-box;
+    border: 5px outset gray;
     font-size: 25px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border-radius: 10px;
@@ -97,15 +98,15 @@ a {
     }
 
     .main-container {
-        max-height: 800px;
+        max-height: 85%;
         background-color: rgb(89, 72, 216);
-        border-bottom: 0;
-        border-left: 0;
     }
 
     .screen-container {
         width: 320px;
+        padding: 20px;
     }
-    .bottom-container {
+    a {
+        color: rgb(89, 72, 216);
     }
 }
